@@ -51,7 +51,7 @@ class _StudentprofileState extends State<Studentprofile> {
                   setState(() {
                     _edit = true;
                     _fullnamecontroller =
-                        TextEditingController(text: _details['fullname']);
+                        TextEditingController(text: _details['student_name']);
                     _emailidcontroller =
                         TextEditingController(text: _details['emailid']);
                     _dobcontroller =
@@ -145,7 +145,7 @@ class _StudentprofileState extends State<Studentprofile> {
                 controller: _fullnamecontroller,
                 enabled: _edit,
                 decoration: InputDecoration(
-                  hintText: _details['fullname'],
+                  hintText: _details['student_name'],
                   isDense: true,
                 ),
               ),
@@ -265,7 +265,7 @@ class _StudentprofileState extends State<Studentprofile> {
       final response = await Supabase.instance.client
           .from("studentdetails")
           .select()
-          .eq('id', widget.name);
+          .eq('student_id', widget.name);
       setState(() {
         _details = response[0];
       });
@@ -277,13 +277,13 @@ class _StudentprofileState extends State<Studentprofile> {
   Future<void> updateRow() async {
     final response =
         await Supabase.instance.client.from('studentdetails').update({
-      'fullname': _fullnamecontroller.text.trim(),
+      'student_name': _fullnamecontroller.text.trim(),
       'emailid': _emailidcontroller.text.trim(),
       'dob': _dobcontroller.text.trim(),
       'programme': _programmecontroller.text.trim(),
       'branch': _branchcontroller.text.trim(),
       'mobile': _mobilecontroller.text.trim(),
-    }).eq('id', widget.name);
+    }).eq('student_id', widget.name);
 
     if (response != null) {
       print('Error: ${response.error?.message}');

@@ -110,7 +110,7 @@ class _SignuppageState extends State<Signuppage> {
                               _useridcontroller.text.trim()[0] != "s") {
                             SnackBar profilesnack = SnackBar(
                                 content: Text(
-                                    'UserId should start with s or p'));
+                                    'Invalid UserId. It should start with s or p'));
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(profilesnack);
                           } else if (_passwordcontroller.text.trim() == "") {

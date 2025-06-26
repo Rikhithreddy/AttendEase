@@ -186,8 +186,8 @@ class _ProfdetailsState extends State<Profdetails> {
 
   Future<void> insertProfdata() async {
     await supabase.from('profdetails').insert({
-      'id': widget.signupid,
-      'fullname': _fullnamecontoller.text.trim(),
+      'prof_id': widget.signupid,
+      'prof_name': _fullnamecontoller.text.trim(),
       'emailid': _emailidcontroller.text.trim(),
       'dob': _dobcontroller.text.trim(),
       'mobile': _mobilenocontroller.text.trim(),
